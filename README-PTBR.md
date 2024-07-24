@@ -1,4 +1,6 @@
-# Projeto de API de Código Postal
+[🇬🇧️](README.md)
+
+# Projeto API de Código Postal
 
 ## Índice
 
@@ -13,6 +15,9 @@
     - [Executando a Aplicação](#executando-a-aplicação)
 - [Uso](#uso)
     - [Endpoints](#endpoints)
+- [Visualização da API](#visualização-da-api)
+    - [Usando o Swagger](#usando-o-swagger)
+    - [Usando o Frontend](#usando-o-frontend)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 ## Visão Geral
@@ -130,6 +135,45 @@ com.tech.postal_code
 - **POST /clients**: Cria um novo cliente.
 - **PUT /clients/{id}**: Atualiza um cliente pelo ID.
 - **DELETE /clients/{id}**: Deleta um cliente pelo ID.
+
+## Visualização da API
+
+### Usando o Swagger
+
+O Swagger é uma ferramenta que permite visualizar e interagir com a API de forma interativa. Para acessar a documentação
+da API via Swagger, siga os passos abaixo:
+
+1. **Certifique-se de que a aplicação está em execução**: A aplicação deve estar rodando localmente no
+   endereço `http://localhost:8080`.
+
+2. **Acesse o Swagger UI**: Abra seu navegador e vá para o endereço `http://localhost:8080/swagger-ui.html`.
+
+    - Na interface do Swagger UI, você verá uma lista de todos os endpoints disponíveis na API.
+    - Você pode testar os endpoints diretamente pela interface clicando em "Try it out" e preenchendo os parâmetros
+      necessários.
+    - A documentação é gerada automaticamente com base nas anotações feitas nas classes de controle da API.
+
+### Usando o Frontend
+
+O frontend fornece uma interface gráfica para interagir com a API. Para usar o frontend, siga os passos abaixo:
+
+1. **Certifique-se de que a aplicação está em execução**: A aplicação deve estar rodando localmente no
+   endereço `http://localhost:8080`.
+
+2. **Acesse o frontend**: Abra seu navegador e vá para o endereço `http://localhost:8080/web/clients`.
+
+    - Na página inicial, você verá uma lista de clientes cadastrados e um formulário para adicionar novos clientes.
+    - **Cadastrar Cliente**: Preencha o formulário com as informações do cliente, incluindo o nome e o CEP (pode ser
+      digitado no formato `13026099` ou `13026-099`).
+        - Clique no botão "Save" para adicionar o cliente à lista.
+    - **Visualizar Informações**: Após cadastrar um cliente, você pode clicar no nome do cliente na lista para
+      visualizar seus detalhes.
+    - **Buscar Cliente**: Use a barra de busca para filtrar clientes pelo nome. À medida que você digita, a lista será
+      atualizada para mostrar apenas os clientes que correspondem ao texto de busca.
+    - **Atualizar e Deletar**: Você pode atualizar e deletar clientes diretamente na lista de clientes, clicando nos
+      botões apropriados.
+
+Estas funcionalidades fornecem uma maneira fácil e intuitiva de interagir com a API e gerenciar seus dados.
 
 ## Tecnologias Utilizadas
 
