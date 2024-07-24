@@ -188,7 +188,7 @@ These features provide an easy and intuitive way to interact with the API and ma
 
 - Overview: Gives an overview of the project.
 - **Project Structure**: Explains the structure of the project, listing packages and main classes.
-- Database ER Diagram: Presents the DER of the database.
+- Database DER Diagram: Presents the DER of the database.
 - Getting Started: Instructions for getting started with the project, including prerequisites, installation and
   execution.
 - **Usage**: Lists the API endpoints.
