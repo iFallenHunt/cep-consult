@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Clients</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Clients</h1>
+    <a href="/web/clients/new" class="button">Add New Client</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}">
+            <td th:text="${client.id}"></td>
+            <td><a th:href="@{/web/clients/details/{id}(id=${client.id})}" th:text="${client.name}"></a></td>
+            <td th:text="${client.address.cep}"></td>
+            <td>
+                <a th:href="@{/web/clients/edit/{id}(id=${client.id})}" class="button">Edit</a>
+                <a th:href="@{/web/clients/delete/{id}(id=${client.id})}" class="button">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Client Details</h1>
+    <div>
+        <label>ID:</label>
+        <span th:text="${client.id}"></span>
+    </div>
+    <div>
+        <label>Name:</label>
+        <span th:text="${client.name}"></span>
+    </div>
+    <div>
+        <label>CEP:</label>
+        <span th:text="${client.address.cep}"></span>
+    </div>
+    <div>
+        <label>Address:</label>
+        <span th:text="${client.address.logradouro} + ', ' + ${client.address.bairro} + ', ' + ${client.address.localidade} + ' - ' + ${client.address.uf}"></span>
+    </div>
+    <a href="/web/clients" class="button">Back to Clients List</a>
+</div>
+</body>
+</html>
