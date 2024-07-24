@@ -9,6 +9,10 @@
 <body>
 <div class="container">
     <h1>Clients</h1>
+    <form action="#" th:action="@{/web/clients}" method="get" class="search-form">
+        <input type="text" name="name" placeholder="Search by name" th:value="${param.name}">
+        <button type="submit" class="button">Search</button>
+    </form>
     <a href="/web/clients/new" class="button">Add New Client</a>
     <table>
         <thead>

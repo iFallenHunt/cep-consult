@@ -3,26 +3,24 @@
 <head>
     <title>Client Form</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
-    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-    <script th:src="@{/js/scripts.js}"></script>
 </head>
 <body>
 <div class="container">
-    <h1 th:text="${client.id == null} ? 'Add Client' : 'Edit Client'"></h1>
-    <form th:action="@{${client.id == null} ? '/web/clients' : '/web/clients/' + ${client.id}}" th:object="${client}" method="post">
+    <h1>Create/Edit Client</h1>
+    <form th:action="@{/web/clients/save}" th:object="${client}" method="post">
         <div>
-            <label>Name:</label>
-            <input type="text" th:field="*{name}" required/>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required />
         </div>
         <div>
-            <label>CEP:</label>
-            <input type="text" th:field="*{address.cep}" required/>
+            <label for="cep">Address CEP:</label>
+            <input type="text" id="cep" th:field="*{address.cep}" required />
         </div>
         <div>
             <button type="submit" class="button">Save</button>
-            <a href="/web/clients" class="button">Cancel</a>
         </div>
     </form>
+    <a href="/web/clients" class="button">Back to Clients</a>
 </div>
 </body>
 </html>
