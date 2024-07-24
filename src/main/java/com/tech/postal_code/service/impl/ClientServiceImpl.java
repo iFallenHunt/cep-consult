@@ -1,24 +1,28 @@
 package com.tech.postal_code.service.impl;
 
-import com.tech.postal_code.exception.ResourceNotFoundException;
 import com.tech.postal_code.model.Address;
 import com.tech.postal_code.repository.AddressRepository;
 import com.tech.postal_code.model.Client;
 import com.tech.postal_code.repository.ClientRepository;
 import com.tech.postal_code.service.ClientService;
 import com.tech.postal_code.service.ViaCepService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
-    private final ClientRepository clientRepository;
-    private final AddressRepository addressRepository;
-    private final ViaCepService viaCepService;
+    @Autowired
+    private ClientRepository clientRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
+
+    @Autowired
+    private ViaCepService viaCepService;
 
     @Override
     public Iterable<Client> findAll() {
@@ -27,8 +31,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client findById(Long id) {
-        return clientRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Client not found with id " + id));
+        return clientRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -38,20 +41,20 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void update(Long id, Client client) {
-        if (clientRepository.existsById(id)) {
+        Optional<Client> clientDb = clientRepository.findById(id);
+        if (clientDb.isPresent()) {
             saveClientWithCep(client);
-        } else {
-            throw new ResourceNotFoundException("Client not found with id " + id);
         }
     }
 
     @Override
     public void delete(Long id) {
-        if (clientRepository.existsById(id)) {
-            clientRepository.deleteById(id);
-        } else {
-            throw new ResourceNotFoundException("Client not found with id " + id);
-        }
+        clientRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Client> findByName(String name) {
+        return clientRepository.findByNameContainingIgnoreCase(name);
     }
 
     private void saveClientWithCep(Client client) {
