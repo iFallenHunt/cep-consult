@@ -68,32 +68,30 @@ com.tech.postal_code
 
 ## Database DER Diagram
 
-```
-+----------------------+
-|       Client         |
-+----------------------+
-| - id: Long           |
-| - name: String       |
-| - address_cep: String|
-+----------------------+
-            |
-            | ManyToOne
-            |
-+----------------------+
-|      Address         |
-+----------------------+
-| - cep: String        |
-| - logradouro: String |
-| - complemento: String|
-| - unidade: String    |
-| - bairro: String     |
-| - localidade: String |
-| - uf: String         |
-| - ibge: String       |
-| - gia: String        |
-| - ddd: String        |
-| - siafi: String      |
-+----------------------+
+```mermaid
+classDiagram
+    class Client {
+        - Long id
+        - String name
+        - String address_cep
+    }
+
+    class Address {
+        - String cep
+        - String logradouro
+        - String complemento
+        - String unidade
+        - String bairro
+        - String localidade
+        - String uf
+        - String ibge
+        - String gia
+        - String ddd
+        - String siafi
+    }
+
+    Client --> "1" Address : ManyToOne
+
 ```
 
 ## Getting Started
